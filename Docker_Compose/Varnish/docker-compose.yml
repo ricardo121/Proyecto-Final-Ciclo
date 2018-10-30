@@ -1,0 +1,24 @@
+version: '3'
+services:
+  apache_var:
+    build: DockerFile/
+    volumes:
+      - Apache_data:/var/www/html/
+    ports:
+      - "8000:80"
+    restart: always
+  varnish:
+    depends_on:
+      - apache_var
+    build: DockerFile2/
+    stdin_open: true
+    tty: true
+    ports:
+     - "8006:80"
+     - "6082:6082"
+    volumes:
+      - Varnish_data:/etc/varnish/
+    restart: always
+volumes:
+  Apache_data:
+  Varnish_data:
