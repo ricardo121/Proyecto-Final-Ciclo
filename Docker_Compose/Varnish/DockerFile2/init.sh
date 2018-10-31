@@ -1,6 +1,5 @@
 #!/bin/bash
 exec varnishd \
-    -j unix,user=vcache \
     -F \
     -f ${VARNISH_CONFIG} \
     -s ${VARNISH_STORAGE} \
