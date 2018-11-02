@@ -1,5 +1,12 @@
 version: '3'
 services:
+  apache_squid:
+    build: DockerFile2/
+    volumes:
+      - Apache_dat:/var/www/html/
+    ports:
+      - "8080:80"
+    restart: always
   squid:
     build: DockerFile/
     volumes:
@@ -10,4 +17,4 @@ services:
     restart: always
 volumes:
   Squid_data:
-
+  Apache_dat:
