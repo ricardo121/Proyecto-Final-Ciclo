@@ -1,15 +1,23 @@
 version: '3'
 services:
-  apache_var:
+  apache_var1:
     build: DockerFile/
     volumes:
-      - Apache_data:/var/www/html/
+      - Apache_data1:/var/www/html/
     ports:
-      - "8000:80"
+      - "8001:80"
+    restart: always
+  apache_var2:
+    build: DockerFile/
+    volumes:
+      - Apache_data2:/var/www/html/
+    ports:
+      - "8002:80" 
     restart: always
   varnish:
     depends_on:
-      - apache_var
+      - apache_var1
+      - apache_var2
     build: DockerFile2/
     stdin_open: true
     tty: true
@@ -20,5 +28,13 @@ services:
       - Varnish_data:/etc/varnish/
     restart: always
 volumes:
-  Apache_data:
+  Apache_data1:
+  Apache_data2:
   Varnish_data:
+networks:
+ default:
+  ipam:
+   driver: default
+   config:
+   - subnet: 172.33.0.0/16
+  
