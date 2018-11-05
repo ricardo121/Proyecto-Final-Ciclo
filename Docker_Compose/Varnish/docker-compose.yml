@@ -1,24 +1,24 @@
 version: '3'
 services:
-  apache_var1:
-    build: DockerFile/
+  apache_principal:
+    build: DockerFile2/
     volumes:
       - Apache_data1:/var/www/html/
     ports:
-      - "8001:80"
+      - "8002:80"
     restart: always
-  apache_var2:
-    build: DockerFile/
+  apache_secundario:
+    build: DockerFile3/
     volumes:
       - Apache_data2:/var/www/html/
     ports:
-      - "8002:80" 
+      - "8003:80" 
     restart: always
   varnish:
     depends_on:
-      - apache_var1
-      - apache_var2
-    build: DockerFile2/
+      - apache_principal
+      - apache_secundario
+    build: DockerFile/
     stdin_open: true
     tty: true
     ports:

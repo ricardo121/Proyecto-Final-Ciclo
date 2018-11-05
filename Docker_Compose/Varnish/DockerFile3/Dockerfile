@@ -1,4 +1,3 @@
-
 From debian:latest
 
 EXPOSE 80
@@ -18,4 +17,3 @@ RUN chmod 777 /var/www/html/index.html
 ENTRYPOINT ["apache2ctl"]
 
 CMD ["-DFOREGROUND"]
-
