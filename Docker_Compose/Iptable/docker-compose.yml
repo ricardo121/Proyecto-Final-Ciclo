@@ -1,0 +1,26 @@
+version: '3'
+services:
+  server1_apache:
+    build: DockerFile2/
+    volumes:
+      - Apache_router1:/var/www/html/
+    ports:
+      - "8010:80" 
+    restart: always
+  router_server:
+    depends_on:
+      - server1_apache
+    build: DockerFile/
+    volumes:
+      - Router_data:/etc/
+    restart: always
+volumes:
+  Apache_router1:
+  Router_data: 
+networks:
+ default:
+  ipam:
+   driver: default
+   config:
+   - subnet: 172.20.0.0/16
+
