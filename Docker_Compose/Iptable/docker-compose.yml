@@ -1,6 +1,7 @@
 version: '3'
 services:
   server1_apache:
+    privileged: true
     build: DockerFile2/
     volumes:
       - Apache_router1:/var/www/html/
@@ -8,6 +9,7 @@ services:
       - "8010:80" 
     restart: always
   router_server:
+    privileged: true
     depends_on:
       - server1_apache
     build: DockerFile/
