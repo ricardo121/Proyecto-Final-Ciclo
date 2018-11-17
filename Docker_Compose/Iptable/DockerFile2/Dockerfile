@@ -9,6 +9,8 @@ Run apt-get -y install apache2
 
 Run apt-get -y install apache2-utils
 
+Run apt-get -y install iptables
+
 Run apt-get -y install curl
 
 Run rm -r /var/www/html/index.html
