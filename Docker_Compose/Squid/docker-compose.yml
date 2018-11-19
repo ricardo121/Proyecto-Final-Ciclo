@@ -9,8 +9,6 @@ services:
     restart: always
   squid:
     build: DockerFile/
-    stdin_open: true
-    tty: true
     volumes:
       - Squid_data:/etc/squid/
     ports:
