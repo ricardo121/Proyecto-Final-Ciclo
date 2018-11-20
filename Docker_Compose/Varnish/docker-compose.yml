@@ -19,8 +19,6 @@ services:
       - apache_principal
       - apache_secundario
     build: DockerFile/
-    stdin_open: true
-    tty: true
     ports:
      - "8006:80"
      - "6082:6082"
