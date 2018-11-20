@@ -1,7 +1,7 @@
 #Imagen que vamos a utilizar para crear el servicio
 FROM ubuntu:latest
 
-#Para ejecutar comandos dentro del docker
+#Para ejecutar comandos dentro del docker(Run comando)
 Run apt-get update
 Run apt-get -y install squid3
 Run apt-get -y install apache2-utils
