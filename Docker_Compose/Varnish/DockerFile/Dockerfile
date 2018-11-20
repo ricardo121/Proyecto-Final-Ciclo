@@ -26,5 +26,5 @@ ENV VARNISH_MANAGEMENT_LISTEN localhost:6082
 EXPOSE 80
 EXPOSE 6082
 
-#Especifica el comando que se ejecuta cuando se lanza el contendor(en este caso un script)
+#Especifica el comando que se ejecuta cuando se lanza el contenedor(en este caso un script)
 CMD ["/init.sh"]

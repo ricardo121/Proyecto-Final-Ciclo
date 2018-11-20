@@ -1,7 +1,7 @@
 #Imagen que vamos a utilizar para crear el servicio
 FROM ubuntu:latest
 
-#Para ejecutar comandos dentro del docker(Run comando)
+#Para ejecutar comandos dentro del docker
 Run apt-get update
 Run apt-get -y install squid3
 Run apt-get -y install apache2-utils
@@ -25,8 +25,9 @@ Run htpasswd -b -c /etc/squid/claves ricardo ricardo
 #Indicamos que el contenedor va a escuchar por el puerto 3128
 EXPOSE 3128
 
-#
+#Especifica el comando que se ejecuta cuando se lanza el contenedor
 ENTRYPOINT ["/usr/sbin/squid3"]
-#
+#Especifica el comando que se ejecuta cuando se lanza el contenedor(en este caso que acompaña a ENTRYPOINT sirve para especificar los valores  predeterminados que se pueden invalidar con la opcion -d de docker run)
+
 CMD ["-NYCd1"]
 

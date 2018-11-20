@@ -14,9 +14,9 @@ RUN chmod 777 /var/www/html/index.html
 #Indicamos que el contenedor va a escuchar por el puerto 80
 EXPOSE 80
 
-#Especifica el comando que se ejecuta cuando se lanza el contendor
+#Especifica el comando que se ejecuta cuando se lanza el contenedor
 ENTRYPOINT ["apache2ctl"]
 
-#Especifica el comando que se ejecuta cuando se lanza el contendor(en este caso que acompaña a ENTRYPOINT sirve para especificar los valores  predeterminados que se pueden invalidar con la opcion -d de docker run )
+#Especifica el comando que se ejecuta cuando se lanza el contenedor(en este caso que acompaña a ENTRYPOINT sirve para especificar los valores  predeterminados que se pueden invalidar con la opcion -d de docker run )
 CMD ["-DFOREGROUND"]
 
