@@ -1,29 +1,41 @@
 version: '2'
 services:
-  Mysql-Maestro:
-    image: mysql:5.7
+  maestro:
+    build: DockerFile/
     ports:
       - "3316:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data1:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: wordpress
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: maestro
+      MYSQL_DATABASE: maestro
+      MYSQL_USER: maestro
+      MYSQL_PASSWORD: maestro
 
-  Mysql-Esclavo:
+  esclavo:
     depends_on:
-      - Mysql-Maestro
-    image: mysql:5.7
+      - maestro
+    build: DockerFile2/
     ports:
-      - "3316:3317"
+      - "3317:3306"
+    volumes:
+      - db_data2:/var/lib/mysql
     restart: always
     environment:
-      WORDPRESS_DB_HOST: Mysql_Maestro:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: esclavo
+      MYSQL_DATABASE: maestro
+      MYSQL_USER: esclavo
+      MYSQL_PASSWORD: esclavo
+
 volumes:
-  db_data:
+  db_data1:
+  db_data2:
+networks:
+ default:
+  ipam:
+   driver: default
+   config:
+   - subnet: 172.40.0.0/16
+
 
