@@ -1,6 +1,9 @@
 version: '3'
 services:
   apache_principal:
+    networks:
+      default:
+        ipv4_address: 172.33.0.2
     build: DockerFile2/
     volumes:
       - Apache_data1:/var/www/html/
@@ -8,6 +11,9 @@ services:
       - "8002:80"
     restart: always
   apache_secundario:
+    networks:
+      default:
+        ipv4_address: 172.33.0.3
     build: DockerFile3/
     volumes:
       - Apache_data2:/var/www/html/
@@ -15,6 +21,9 @@ services:
       - "8003:80" 
     restart: always
   varnish:
+    networks:
+      default:
+        ipv4_address: 172.33.0.4
     depends_on:
       - apache_principal
       - apache_secundario
@@ -32,7 +41,6 @@ volumes:
 networks:
  default:
   ipam:
-   driver: default
    config:
    - subnet: 172.33.0.0/16
   
