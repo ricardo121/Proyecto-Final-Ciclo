@@ -5,9 +5,9 @@ FROM mysql:5.7
 Run apt-get update
 Run apt-get -y install nano
 #
-#COPY init.sh /entrypoint.sh
+COPY my.cnf /etc/mysql/my.cnf
 #
-#RUN chmod 777 /entrypoint.sh
+RUN chmod 777  /etc/mysql/my.cnf
 
 
 #Variables de entorno
