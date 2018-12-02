@@ -7,7 +7,11 @@ Run apt-get -y install nano
 #
 COPY my.cnf /etc/mysql/my.cnf
 #
-RUN chmod 777  /etc/mysql/my.cnf
+RUN chmod 644  /etc/mysql/my.cnf
+
+COPY init.sql /docker-entrypoint-initdb.d
+#
+RUN chmod 644  /docker-entrypoint-initdb.d/init.sql
 
 
 #Variables de entorno
