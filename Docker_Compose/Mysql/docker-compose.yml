@@ -8,7 +8,7 @@ services:
     ports:
       - "3319:3306"
     volumes:
-      - db_data1:/var/lib/mysql
+      - mysql_data1:/etc/mysql/
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: maestro
@@ -26,7 +26,7 @@ services:
     ports:
       - "3318:3306"
     volumes:
-      - db_data2:/var/lib/mysql
+      - mysql_data2:/etc/mysql/
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: esclavo
@@ -35,8 +35,9 @@ services:
       MYSQL_PASSWORD: esclavo
 
 volumes:
-  db_data1:
-  db_data2:
+  mysql_data1:
+  mysql_data2:
+
 networks:
  default:
   ipam:
