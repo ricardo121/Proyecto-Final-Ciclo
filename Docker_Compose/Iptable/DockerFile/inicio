@@ -1,8 +1,8 @@
 #!/bin/bash
 # -- UTF 8 --
 iptables="/usr/sbin/iptables-apply"
-LAN="eth0"
-WIFI="wlan0"
+#LAN="eth0"
+#WIFI="wlan0"
 
 echo ""
 

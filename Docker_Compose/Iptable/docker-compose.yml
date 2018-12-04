@@ -1,6 +1,9 @@
 version: '3'
 services:
   server1_apache:
+    networks:
+      default:
+        ipv4_address: 172.20.0.200
     privileged: true
     build: DockerFile2/
     volumes:
@@ -8,7 +11,11 @@ services:
     ports:
       - "8010:80" 
     restart: always
+
   router_server:
+    networks:
+      default:
+        ipv4_address: 172.20.0.100
     privileged: true
     depends_on:
       - server1_apache
@@ -16,13 +23,15 @@ services:
     volumes:
       - Router_data:/etc/
     restart: always
+
 volumes:
   Apache_router1:
   Router_data: 
+
 networks:
  default:
   ipam:
-   driver: default
    config:
    - subnet: 172.20.0.0/16
+
 
