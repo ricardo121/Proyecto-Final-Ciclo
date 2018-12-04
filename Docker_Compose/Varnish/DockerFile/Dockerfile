@@ -5,18 +5,20 @@ FROM ubuntu:latest
 Run apt-get update
 Run apt-get -y install varnish
 
-#Para copiar archivos de la maquina real a la maquina docker
+#Para copiar archivos de la maquina real a la maquina docker(Copy...)
 COPY init.sh /init.sh
 #
 RUN chmod 777 /init.sh
+
 #
 RUN rm -r /etc/varnish/default.vcl
+
 #
 COPY default.vcl /etc/varnish/
 #
 RUN chmod 777 /etc/varnish/default.vcl
 
-#Variables de entorno
+#Variables de entorno(Variables que esta dentro del docker las cuales se definen en el Despliege)
 ENV VARNISH_CONFIG /etc/varnish/default.vcl
 ENV VARNISH_STORAGE malloc,100m
 ENV VARNISH_LISTEN :80

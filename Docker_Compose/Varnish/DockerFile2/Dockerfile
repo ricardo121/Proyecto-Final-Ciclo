@@ -17,6 +17,7 @@ EXPOSE 80
 #Especifica el comando que se ejecuta cuando se lanza el contenedor
 ENTRYPOINT ["apache2ctl"]
 
-#Especifica el comando que se ejecuta cuando se lanza el contenedor(en este caso que acompaña a ENTRYPOINT sirve para especificar los valores  predeterminados que se pueden invalidar con la opcion -d de docker run )
+#Especifica el comando que se ejecuta cuando se lanza el contenedor
+#(en este caso que acompaña a ENTRYPOINT sirve para especificar los valores  predeterminados que se pueden invalidar con la opcion -d de docker run )
 CMD ["-DFOREGROUND"]
 
