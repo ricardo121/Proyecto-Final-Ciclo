@@ -1,6 +1,9 @@
 version: '3'
 services:
   apache_squid:
+    networks:
+      default:
+        ipv4_address: 172.18.0.2
     build: DockerFile2/
     volumes:
       - Apache_dat:/var/www/html/
@@ -8,6 +11,9 @@ services:
       - "8080:80"
     restart: always
   squid:
+    networks:
+      default:
+        ipv4_address: 172.18.0.3
     build: DockerFile/
     volumes:
       - Squid_data:/etc/squid/
@@ -17,3 +23,8 @@ services:
 volumes:
   Squid_data:
   Apache_dat:
+networks:
+ default:
+  ipam:
+   config:
+   - subnet: 172.18.0.0/16
