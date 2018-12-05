@@ -1,0 +1,52 @@
+version: '3'
+services:
+  apache_principal:
+    networks:
+      default:
+        ipv4_address: 172.33.0.2
+    build: DockerFile2/
+    volumes:
+      - Apache_data1:/var/www/html/
+    ports:
+      - "8002:80"
+    restart: always
+  apache_secundario:
+    networks:
+      default:
+        ipv4_address: 172.33.0.3
+    build: DockerFile3/
+    volumes:
+      - Apache_data2:/var/www/html/
+    ports:
+      - "8003:80" 
+    restart: always
+  varnish:
+    networks:
+      default:
+        ipv4_address: 172.33.0.4
+    depends_on:
+      - apache_principal
+      - apache_secundario
+    build: DockerFile/
+    ports:
+     - "8006:85"
+     - "8012:88"
+     - "6082:6082"
+    volumes:
+      - Varnish_data:/etc/varnish/
+    restart: always
+    environment:
+     VARNISH_CONFIG: /etc/varnish/default.vcl
+     VARNISH_STORAGE: 100m
+     VARNISH_LISTEN: 88
+     VARNISH_MANAGEMENT_LISTEN: 6082
+volumes:
+  Apache_data1:
+  Apache_data2:
+  Varnish_data:
+networks:
+ default:
+  ipam:
+   config:
+   - subnet: 172.33.0.0/16
+  
