@@ -20,5 +20,5 @@ RUN chmod 644  /docker-entrypoint-initdb.d/init.sql
 #Indicamos que el contenedor va a escuchar por el puerto 3606
 EXPOSE 3606
 
-#Especifica el comando que se ejecuta cuando se lanza el contenedor
+#Especifica el comando que se ejecuta cuando se inicia el contenedor
 CMD ["mysqld"]
