@@ -27,11 +27,9 @@ Run htpasswd -b -c /etc/squid/claves ricardo ricardo
 #Indicamos que el contenedor va a escuchar por el puerto 3128
 EXPOSE 3128
 
-#Especifica el comando que se ejecuta cuando se lanza el contenedor
+#Especifica el comando que siempre se ejecuta cuando se lanza el contenedor
 ENTRYPOINT ["/usr/sbin/squid3"]
 
-#Especifica el comando que se ejecuta cuando se lanza el contenedor
-#(en este caso que acompaña a ENTRYPOINT sirve para especificar los valores  predeterminados que se pueden invalidar con la opcion -d de docker run)
-
+#Especifica los argumentos que serán alimentados al ENTRYPOINT
 CMD ["-NYCd1"]
 
