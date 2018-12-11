@@ -3,7 +3,7 @@ services:
   server1_apache:
     networks:
       default:
-        ipv4_address: 172.20.0.200
+        ipv4_address: 172.50.0.200
     privileged: true
     build: DockerFile2/
     volumes:
@@ -15,7 +15,7 @@ services:
   router_server:
     networks:
       default:
-        ipv4_address: 172.20.0.100
+        ipv4_address: 172.50.0.100
     privileged: true
     depends_on:
       - server1_apache
@@ -32,6 +32,6 @@ networks:
  default:
   ipam:
    config:
-   - subnet: 172.20.0.0/16
+   - subnet: 172.50.0.0/16
 
 
